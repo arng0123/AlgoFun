@@ -10,8 +10,8 @@ class Node {
   }
 
   depthFirstSearch(array) { //takes in an empty array
-    array.push(this.name)
-		this.children.forEach(child => {
+    array.push(this.name) //push the current name
+		this.children.forEach(child => {  //recusrively go through each child to add to the array
 			child.depthFirstSearch(array)
 		})
 		
