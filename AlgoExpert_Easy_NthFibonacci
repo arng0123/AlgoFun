@@ -1,0 +1,11 @@
+function getNthFib(n) {
+	let sum = 0
+
+	if(n===2){
+		sum =1
+	}else if (n>2) {
+		sum += getNthFib(n-1) + getNthFib(n-2)
+	}
+
+return sum
+}
