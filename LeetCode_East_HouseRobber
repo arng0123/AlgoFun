@@ -1,0 +1,15 @@
+var rob = function(nums) {
+    let oldPrev = 0
+    let newPrev = 0
+    
+    for(let i=0; i<nums.length; i++){
+        let current = nums[i]
+        let holder = newPrev
+        
+        newPrev = Math.max(oldPrev + current, newPrev)
+        
+        oldPrev = holder
+    }
+    
+    return newPrev
+};
