@@ -1,0 +1,17 @@
+var maxProfit = function(prices) {
+    let profit = 0
+    let lowestPrice = prices[0] 
+    
+    for(let i=1; i<prices.length; i++){
+      let current = prices[i] - lowestPrice 
+       if(current > profit){
+         profit = current
+       }
+
+       if(prices[i]<lowestPrice){
+         lowestPrice = prices[i]
+       }
+    }
+    
+    return profit 
+};
