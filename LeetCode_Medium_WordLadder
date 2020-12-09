@@ -1,0 +1,42 @@
+function ladderLength(beginWord, endWord, wordList) {
+  let count = 1
+  let queue = [beginWord]
+  
+  //makes a set out of the word list
+  let set = new Set(wordList)
+  
+  
+  while (queue.length) {
+    let next = []
+
+    // looping through the queue
+    for(let word of queue){
+      if(word === endWord) return count
+
+
+      //loop through each character in the word
+      for(let i=0; i<word.length; i++ ){
+
+        // replace the char with letters from a-z
+        for (let j = 0; j<26; j++){
+          // make a new word
+           const w2 = word.slice(0, i) + String.fromCharCode(97 + j) + word.slice(i + 1);  // 97 -> 'a'
+           if(set.has(w2)) {
+          // check if the new word is in the set
+          // if it does exist in the set push it to our "next" holder variable
+          // then delete it from the set
+             next.push(w2)
+             set.delete(w2)
+           }
+
+        }
+      }
+    }
+    //reassign queue to our next holder var
+    queue = next;
+    count++
+  }
+
+return 0
+
+}
