@@ -1,0 +1,49 @@
+//Attempt 1
+var cloneGraph = function(node) {
+    
+  let hash = {};
+  
+
+  const dfs = (node) => {
+     if(!node) return null
+     
+    if (hash[node.val]) return hash[node.val]
+
+    let head = new Node(node.val);
+    hash[node.val] = head;
+
+    // loop through the neighbors array
+    for (let i = 0; i<node.neighbors.length; i++){
+      head.neighbors.push(dfs(node.neighbors[i]))
+    }
+
+    return head
+
+  }
+
+ return dfs(node)
+ 
+};
+
+
+
+
+//Attempt 2
+// Refactored with a Map()
+
+var cloneGraph = function(node) {
+  let hash = new Map();
+  if(!node) return null
+
+  const dfs = (node) => {
+    if (!hash.has(node.val)){
+      hash.set(node.val, new Node(node.val))
+      hash.get(node.val).neighbors = node.neighbors.map(dfs)
+    }
+      return hash.get(node.val)
+    }
+
+
+ return dfs(node)
+ 
+}
