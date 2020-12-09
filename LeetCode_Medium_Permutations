@@ -1,0 +1,30 @@
+var permute = function(nums) {
+  let perms = []
+
+  helper(perms, nums, new Array(nums.length).fill(false), [])
+
+return perms 
+};
+
+
+
+const helper = (perms, nums, used, curr) => {
+  if(curr.length === nums.length) {
+    perms.push([...curr]) 
+    return 
+  }
+
+  for(let i=0; i<used.length; i++){
+    
+    if(used[i]) continue
+
+    used[i] = true
+    curr.push(nums[i])
+    helper(perms, nums, used, curr)
+
+    used[i] = false
+    curr.pop()
+  } 
+
+
+}
